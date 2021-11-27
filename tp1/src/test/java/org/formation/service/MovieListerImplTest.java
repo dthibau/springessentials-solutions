@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class MovieListerTest {
+public class MovieListerImplTest {
 
 	@Test
 	public void testDirectedByWithFile() {
@@ -35,7 +35,7 @@ public class MovieListerTest {
 	}
 
 	private void performTest(ApplicationContext context) {
-		MovieLister movieLister = (MovieLister) context.getBean("movieLister");
+		MovieLister movieLister = (MovieLister) context.getBean(MovieLister.class);
 
 		List<Movie> hitchcock = movieLister.moviesDirectedBy("Hitchcock");
 		List<Movie> HITCHCOCK = movieLister.moviesDirectedBy("HITCHCOCK");
