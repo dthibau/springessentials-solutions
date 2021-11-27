@@ -8,10 +8,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.formation.model.Movie;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Repository;
 
+@Repository
+@Profile("file")
 public class FileDAO implements MovieDAO {
 
-private String file;
+	@Autowired
+	Environment env;
+
+	@Autowired
+	ApplicationContext context;
+
+	@Value("${movie.file}")
+	String file;
+	
 	private List<Movie> data;
 	
 	public List<Movie> findAll() {
@@ -25,12 +41,12 @@ private String file;
 		return data;
 	}
 
-	public void setFile(String file) {
-		this.file = file;
-	}
+
 	
 	private void loadFile() throws IOException {
-		data = new ArrayList<Movie>();;
+		
+		data = new ArrayList<Movie>();
+		
 		InputStream in = this.getClass().getResourceAsStream(file);
 
 		BufferedReader br = new BufferedReader (new InputStreamReader(in));
@@ -45,4 +61,6 @@ private String file;
 			data.add(m);
 		}
 	}
+
+
 }
