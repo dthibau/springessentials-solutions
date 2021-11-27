@@ -11,7 +11,7 @@ spring:
       - prod
       
   datasource:
-    url: jdbc:postgresql://localhost:5434/f_members
+    url: jdbc:postgresql://localhost:5432/f_members
     username: postgres
     password: postgres
     

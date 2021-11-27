@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:insert="fragments :: header"></div>
+
+<div th:insert="fragments :: navbar"></div>
+
+<div class="container py-5">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron">
+				<h1 class="display-4">Documents</h1>
+				<p class="lead">Accéder à vos documents à tout moment.</p>
+				<p>Votre espace gratuit limité à 10Go.</p>
+				<hr class="my-4">
+				<a class="btn btn-primary btn-lg" href="/web/documents" role="button">Accès
+					à la liste des documents</a>
+				<br/><br/>	
+				Ou<br/><br/>
+				<a class="btn btn-primary btn-sm" href="/web/register" role="button">Enregistrer vous</a>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:insert="fragments :: footer"></div>
