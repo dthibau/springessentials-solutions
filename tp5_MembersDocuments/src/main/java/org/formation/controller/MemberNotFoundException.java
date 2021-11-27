@@ -1,7 +1,7 @@
 package org.formation.controller;
 
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Allow the controller to return a 404 if an account is not found by simply
@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
  * @author Paul Chapman
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class MemberNotFoundException extends RuntimeException {
+public class MemberNotFoundException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 

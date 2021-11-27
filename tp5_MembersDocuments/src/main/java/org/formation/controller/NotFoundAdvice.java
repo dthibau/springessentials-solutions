@@ -1,5 +1,7 @@
 package org.formation.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpHeaders;
@@ -12,10 +14,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class NotFoundAdvice extends ResponseEntityExceptionHandler {
 
-	
-	@ExceptionHandler(value = {MemberNotFoundException.class})
-	  ResponseEntity<Object> handleNotFoundException(HttpServletRequest request, Throwable ex) {
-	    return new ResponseEntity<Object>(
-	          ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND);
-	    }
+	@ExceptionHandler(value = { MemberNotFoundException.class })
+	ResponseEntity<Object> handleNotFoundException(HttpServletRequest request, Throwable ex) {
+		ErrorDto error = new ErrorDto(ex.getMessage(), new Date());
+		return new ResponseEntity<Object>(error, new HttpHeaders(), HttpStatus.NOT_FOUND);
+	}
+
+
 }

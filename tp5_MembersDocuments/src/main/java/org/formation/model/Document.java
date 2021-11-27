@@ -10,6 +10,10 @@ import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.formation.controller.views.MemberViews;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Document implements Serializable {
 
@@ -19,8 +23,10 @@ public class Document implements Serializable {
 	private static final long serialVersionUID = 6590486482810196501L;
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(MemberViews.Detail.class)
 	private long id;
 	
+	@JsonView(MemberViews.Detail.class)
 	private String name,contentType;
 	
 	@Column(name="doc_created")
@@ -30,6 +36,7 @@ public class Document implements Serializable {
 	private byte[] data;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonView(MemberViews.Detail.class)
 	private Date uploadedDate;
 
 	public long getId() {
